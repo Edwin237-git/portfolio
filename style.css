@@ -1,0 +1,75 @@
+/* 1) Reset simple */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* 2) Thème (variables) */
+:root{
+  --bg: #0a0a0b;
+  --surface: #0f1013;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --line: #1f2937;
+  --accent: #22d3ee; /* cyan */
+  --radius: 12px;
+  --space: 8px;
+}
+
+/* 3) Styles globaux */
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+h1, h2, h3 { margin: 0 0 calc(var(--space) * 1); line-height: 1.2; }
+p { margin: 0 0 calc(var(--space) * 1.5); color: var(--text); }
+
+/* Échelle typographique fluide */
+h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; }
+h2 { font-size: clamp(20px, 3.6vw, 28px); font-weight: 800; }
+h3 { font-size: 18px; font-weight: 700; }
+
+
+/* 4) Mise en page basique */
+header, .section, footer { padding: 24px 0; }
+header{ position: sticky; top: 0; background: rgba(15,16,19,0.8); border-bottom: 2px solid var(--line); backdrop-filter: blur(6px);z-index: 10; }
+footer{ border-top: 1px solid var(--line); background: var(--surface); }
+
+.container{ width: min(1100px, 92%); margin-inline: auto; }
+
+/* 5) Header */
+header .container{ display: flex; align-items: center; justify-content: space-between; }
+header h1{ margin: 0; font-size: 20px; }
+nav ul{ display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+nav a{ color: var(--text); text-decoration: none; opacity: .9; }
+nav a:hover{ opacity: 1; color: var(--accent); }
+
+.btn-primary{
+  display: inline-block;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2.25); /* 12px 18px */
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #071317;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-primary:hover { filter: brightness(1.05); }
+
+
+/* 6) Sections */
+#about, #projects, #contact{ padding: 40px 0; }
+#projects{ background: var(--surface); border-block: 1px solid var(--line); }
+
+/* 7) Listes projets “propre” */
+#projects ul{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; list-style: none; padding: 0; }
+#projects li{ padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.03); }
+
+/* 8) Liens dans le contenu */
+a{ color: var(--accent); }
+a:hover{ text-decoration: underline; }
+
+/* 9) Responsive */
+@media (max-width: 720px){
+  #projects ul{ grid-template-columns: 1fr; }
+  nav ul{ gap: 10px; }
+}
